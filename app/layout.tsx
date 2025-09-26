@@ -3,19 +3,21 @@ import './globals.css';
 import { fontSans } from './fonts/fonts';
 import { ChatProvider } from '@/app/context/chat-context';
 
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://carro-gpt.example.com';
+
 export const metadata: Metadata = {
   title: 'Carro GPT',
   description: 'AI Assistant for Carro',
-  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? 'https://carro-gpt.example.com'),
+  metadataBase: new URL(siteUrl),
   openGraph: {
     title: 'Carro GPT',
     description: 'AI assistant helps with UX copywriting by providing style-consistent suggestions',
-    url: '/',
+    url: siteUrl,
     siteName: 'Carro GPT',
     type: 'website',
     images: [
       {
-        url: '/og-image.png',
+        url: new URL('/og-image.png', siteUrl).toString(),
         width: 1200,
         height: 630,
         alt: 'Carro GPT – AI assistant helps with UX copywriting by providing style-consistent suggestions',
@@ -26,7 +28,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Carro GPT',
     description: 'AI assistant helps with UX copywriting by providing style-consistent suggestions',
-    images: ['/og-image.png'],
+    images: [new URL('/og-image.png', siteUrl).toString()],
   },
   icons: {
     icon: [
