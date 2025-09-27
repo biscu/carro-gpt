@@ -6,7 +6,9 @@ A button is a widget that enables users to trigger **an action or event**, such 
 
 **Examples:**
 
-`Edit details` | `Add to cart →` | `Clear all filters (2)`
+`Edit details` 
+`Add to cart →` 
+`Clear all filters (2)` 
 
 **Important for accessibility!**
 
@@ -41,4 +43,5 @@ Yes or no on buttons is also vague. For example if you want to ask the user if h
 
 Do you want to cancel the application?
 
-`Cancel` | `Keep`
+`Cancel` 
+`Keep`
