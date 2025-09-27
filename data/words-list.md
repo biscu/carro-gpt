@@ -2,9 +2,6 @@
 
 Collection of terms connected to our business, with the goal to reach better language consistently across channels and services.
 Every term has been discussed and researched, and some are drawn from previous PostNord wordlists.
-The sections for now include: Address fields and contact information, Invoices and payment, Deliveries and other postal terms, Portal Business specific, Technical terms and Other.
-Most words come with a comment or further explanation on the definition.
-This list is a living document, which means I’ll continue to update and refine it over time. Feel free to reach out with suggestions for new terms or if you believe any existing for some reason is wrong.
 
 ## Address fields and contact information
 
