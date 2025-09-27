@@ -17,6 +17,7 @@ const GUIDELINES = [
   { name: 'Writing about the screen', path: '/guidelines/writing-about-screens' },
   { name: 'Feature discovery', path: '/guidelines/feature-discovery' },
   { name: 'Release notes', path: '/guidelines/release-notes' },
+  { name: 'Words list', path: '/guidelines/words-list' },
 ];
 
 export default function Sidebar() {
