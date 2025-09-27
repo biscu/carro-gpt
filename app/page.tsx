@@ -9,6 +9,8 @@ import Banner from './components/Banner';
 export default function Chat() {
   const [input, setInput] = useState('');
   const { messages, sendMessage, status } = useChatContext();
+  const [showThinking, setShowThinking] = useState(false);
+  const thinkingTimeoutRef = useRef<NodeJS.Timeout | null>(null);
 
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const messagesContainerRef = useRef<HTMLDivElement>(null);
@@ -19,6 +21,30 @@ export default function Chat() {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
   }, [messages]);
 
+  // Handle thinking component delay
+  useEffect(() => {
+    if (status === 'submitted') {
+      // Start the delay timer
+      thinkingTimeoutRef.current = setTimeout(() => {
+        setShowThinking(true);
+      }, 1000); // 1000ms delay
+    } else {
+      // Clear the timer and hide thinking component
+      if (thinkingTimeoutRef.current) {
+        clearTimeout(thinkingTimeoutRef.current);
+        thinkingTimeoutRef.current = null;
+      }
+      setShowThinking(false);
+    }
+
+    // Cleanup on unmount
+    return () => {
+      if (thinkingTimeoutRef.current) {
+        clearTimeout(thinkingTimeoutRef.current);
+      }
+    };
+  }, [status]);
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (input.trim()) {
@@ -27,8 +53,6 @@ export default function Chat() {
     }
   };
 
-  // Show Thinking component only when status is 'submitted' (not when streaming)
-  const showThinking = status === 'submitted';
 
   return (
     <div className="flex min-h-screen bg-white">
@@ -87,7 +111,7 @@ export default function Chat() {
                   </div>
                 ))}
                 
-                {/* Thinking component - shows only when submitted but not yet streaming */}
+                {/* Thinking component - shows only after 500ms delay if still submitted */}
                 <Thinking isVisible={showThinking} />
                 
                 <div ref={messagesEndRef} />
