@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import './globals.css';
 import { fontSans } from './fonts/fonts';
 import { ChatProvider } from '@/app/context/chat-context';
+import { SpeedInsights } from "@vercel/speed-insights/next"
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://carro-gpt.example.com';
 
