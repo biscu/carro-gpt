@@ -16,7 +16,7 @@ interface PageProps {
 // Custom components for markdown elements
 const components: Components = {
   table: ({ node, ...props }) => (
-    <div className="overflow-x-auto overflow-y-auto max-h-96 my-1">
+    <div className="overflow-x-auto">
       <table className="w-full border-collapse" {...props} />
     </div>
   ),
