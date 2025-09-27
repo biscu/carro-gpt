@@ -24,27 +24,29 @@ const WORD_LIST = [
 ];
 
 interface SidebarProps {
-  isOpen: boolean;
-  onClose: () => void;
+  isOpen?: boolean;
+  onClose?: () => void;
 }
 
-export default function Sidebar({ isOpen, onClose }: SidebarProps) {
+export default function Sidebar({ isOpen = true, onClose }: SidebarProps) {
   return (
     <>
-      {/* Mobile overlay */}
-      <div 
-        className={`
-          fixed inset-0 bg-black z-40 md:hidden transition-opacity duration-300 ease-in-out
-          ${isOpen ? 'opacity-50' : 'opacity-0 pointer-events-none'}
-        `}
-        onClick={onClose}
-      />
+      {/* Mobile overlay - only show when onClose is provided (responsive mode) */}
+      {onClose && (
+        <div 
+          className={`
+            fixed inset-0 bg-black z-40 md:hidden transition-opacity duration-300 ease-in-out
+            ${isOpen ? 'opacity-50' : 'opacity-0 pointer-events-none'}
+          `}
+          onClick={onClose}
+        />
+      )}
       
       {/* Sidebar */}
       <div className={`
         fixed left-0 top-0 h-screen w-80 bg-white dark:bg-neutral-800 border-r border-gray-100 dark:border-neutral-700 flex flex-col z-50
         transform transition-transform duration-300 ease-in-out
-        ${isOpen ? 'translate-x-0' : '-translate-x-full'}
+        ${onClose ? (isOpen ? 'translate-x-0' : '-translate-x-full') : 'translate-x-0'}
         md:translate-x-0
       `}>
       <div className="flex-1 overflow-y-auto scrollbar-hide px-6">
