@@ -13,7 +13,7 @@ export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   openGraph: {
     title: 'Carro GPT',
-    description: 'AI assistant helps with UX copywriting by providing style-consistent suggestions',
+    description: 'An AI assistant helping with UX copywriting by providing style-consistent suggestions',
     url: siteUrl,
     siteName: 'Carro GPT',
     type: 'website',
@@ -22,14 +22,14 @@ export const metadata: Metadata = {
         url: 'https://carro-gpt.vercel.app/og-image.png',
         width: 1200,
         height: 630,
-        alt: 'Carro GPT – AI assistant helps with UX copywriting by providing style-consistent suggestions',
+        alt: 'An AI assistant helping with UX copywriting by providing style-consistent suggestions',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Carro GPT',
-    description: 'AI assistant helps with UX copywriting by providing style-consistent suggestions',
+    description: 'An AI assistant helping with UX copywriting by providing style-consistent suggestions',
     images: ['https://carro-gpt.vercel.app/og-image.png'],
   },
   icons: {
