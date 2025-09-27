@@ -48,6 +48,7 @@ export default function RootLayout({
       <body className={`${fontSans} bg-white dark:bg-neutral-900 text-gray-900 dark:text-gray-100`}>
         <ChatProvider>
           {children}
+          <SpeedInsights/>
         </ChatProvider>
       </body>
     </html>
