@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { useState } from 'react';
 
 const GUIDELINES = [
   { name: 'Writing Principles', path: '/guidelines/writing-principles', icon: '/claim.svg' },
@@ -22,9 +23,30 @@ const WORD_LIST = [
   { name: 'Words list', path: '/guidelines/words-list', icon: '/book.svg' },
 ];
 
-export default function Sidebar() {
+interface SidebarProps {
+  isOpen: boolean;
+  onClose: () => void;
+}
+
+export default function Sidebar({ isOpen, onClose }: SidebarProps) {
   return (
-    <div className="fixed left-0 top-0 h-screen w-80 bg-white dark:bg-neutral-800 border-r border-gray-100 dark:border-neutral-700 flex flex-col">
+    <>
+      {/* Mobile overlay */}
+      <div 
+        className={`
+          fixed inset-0 bg-black z-40 md:hidden transition-opacity duration-300 ease-in-out
+          ${isOpen ? 'opacity-50' : 'opacity-0 pointer-events-none'}
+        `}
+        onClick={onClose}
+      />
+      
+      {/* Sidebar */}
+      <div className={`
+        fixed left-0 top-0 h-screen w-80 bg-white dark:bg-neutral-800 border-r border-gray-100 dark:border-neutral-700 flex flex-col z-50
+        transform transition-transform duration-300 ease-in-out
+        ${isOpen ? 'translate-x-0' : '-translate-x-full'}
+        md:translate-x-0
+      `}>
       <div className="flex-1 overflow-y-auto scrollbar-hide px-6">
         <div className="space-y-6 pb-16">
           <div>
@@ -70,6 +92,7 @@ export default function Sidebar() {
           </div>
         </div>
       </div>
-    </div>
+      </div>
+    </>
   );
 }

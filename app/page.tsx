@@ -3,6 +3,7 @@
 import { useChatContext } from '@/app/context/chat-context';
 import { useState, useRef, useEffect } from 'react';
 import Sidebar from './components/Sidebar';
+import MobileNav from './components/MobileNav';
 import Thinking from './components/Thinking';
 import Banner from './components/Banner';
 
@@ -10,6 +11,7 @@ export default function Chat() {
   const [input, setInput] = useState('');
   const { messages, sendMessage, status } = useChatContext();
   const [showThinking, setShowThinking] = useState(false);
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const thinkingTimeoutRef = useRef<NodeJS.Timeout | null>(null);
 
   const messagesEndRef = useRef<HTMLDivElement>(null);
@@ -56,8 +58,9 @@ export default function Chat() {
 
   return (
     <div className="flex min-h-screen bg-white">
-      <Sidebar />
-      <div className="flex-1 pl-64 flex flex-col h-screen overflow-hidden">
+      <Sidebar isOpen={isSidebarOpen} onClose={() => setIsSidebarOpen(false)} />
+      <MobileNav onMenuClick={() => setIsSidebarOpen(true)} />
+      <div className="flex-1 md:pl-80 flex flex-col h-screen overflow-hidden pt-16 md:pt-0">
         {/* Messages container with scrolling */}
         <div 
           ref={messagesContainerRef}
@@ -121,7 +124,7 @@ export default function Chat() {
         </div>
 
         {/* Input area */}
-        <div className="p-4 mb-16">
+        <div className="p-4 mb-4 md:mb-16">
           <form onSubmit={handleSubmit} className="max-w-4xl mx-auto">
             <div className="max-w-4xl mx-auto">
               <Banner
