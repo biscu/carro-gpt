@@ -4,6 +4,7 @@ import { useChatContext } from '@/app/context/chat-context';
 import { useState, useRef, useEffect } from 'react';
 import Sidebar from './components/Sidebar';
 import Thinking from './components/Thinking';
+import Banner from './components/Banner';
 
 export default function Chat() {
   const [input, setInput] = useState('');
@@ -98,6 +99,13 @@ export default function Chat() {
         {/* Input area */}
         <div className="p-4 mb-16">
           <form onSubmit={handleSubmit} className="max-w-4xl mx-auto">
+            <div className="max-w-4xl mx-auto">
+              <Banner
+                title="Hey you, sexy!"
+                description="This is an early concept. Reloading the page will clear your chat history."
+                storageKey="banner:welcome:v1"
+              />
+            </div>
             <div className="flex items-center gap-2">
               <input
                 type="text"
