@@ -13,7 +13,8 @@
     "db:pull": "drizzle-kit introspect",
     "db:push": "drizzle-kit push",
     "db:studio": "drizzle-kit studio",
-    "db:check": "drizzle-kit check"
+    "db:check": "drizzle-kit check",
+    "ship": "git add . && git commit -m \"Ship it! 🚀\" && git push origin main"
   },
   "dependencies": {
     "@ai-sdk/openai": "^2.0.32",

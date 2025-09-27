@@ -15,7 +15,7 @@ export const metadata: Metadata = {
     title: 'Carro GPT',
     description: 'An AI assistant helping with UX copywriting by providing style-consistent suggestions',
     url: siteUrl,
-    siteName: 'Carro GPT',
+    siteName: 'Carro GPT2',
     type: 'website',
     images: [
       {
