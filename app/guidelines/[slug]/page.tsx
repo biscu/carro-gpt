@@ -16,13 +16,13 @@ interface PageProps {
 // Custom components for markdown elements
 const components: Components = {
   table: ({ node, ...props }) => (
-    <div className="overflow-x-auto my-1">
+    <div className="overflow-x-auto overflow-y-auto max-h-96 my-1">
       <table className="w-full border-collapse" {...props} />
     </div>
   ),
   th: ({ node, ...props }) => (
     <th
-    className="px-4 py-3 text-left text-sm font-medium text-gray-600 uppercase tracking-wider bg-gray-50 border-b border-gray-200"
+    className="px-4 py-3 text-left text-sm font-medium text-gray-600 uppercase tracking-wider bg-gray-50 border-b border-gray-200 sticky top-0 z-10"
       {...props}
     />
   ),
@@ -32,18 +32,29 @@ const components: Components = {
       {...props}
     />
   ),
-  code(props: React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement> & { inline?: boolean }) {
+  code(
+    props: React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement> & {
+      inline?: boolean;
+      className?: string;
+    }
+  ) {
     const { inline, className, children, ...rest } = props;
-    if (inline) {
+  
+    // Consider as block if a language class is present; default to inline otherwise
+    const hasLanguageClass = !!className && /\blanguage-/.test(className);
+    const isInline = inline ?? !hasLanguageClass;
+  
+    if (isInline) {
       return (
-        <code className="bg-gray-100 px-1.5 py-0.5 rounded text-sm font-mono text-gray-800">
+        <code className="bg-gray-100 px-1.5 py-0.5 rounded text-sm font-mono text-gray-800" {...rest}>
           {children}
         </code>
       );
     }
+  
     return (
       <pre className="bg-gray-900 p-4 rounded-lg overflow-x-auto my-4 border border-gray-800">
-        <code className="text-gray-100 text-sm" {...rest}>
+        <code className={`text-gray-100 text-sm ${className ?? ''}`} {...rest}>
           {children}
         </code>
       </pre>

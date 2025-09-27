@@ -20,7 +20,7 @@ Every term has been discussed and researched, and some are drawn from previous P
 | Phone number (for contact)           | Telefonnummer (kontaktperson)       | Phone number (for contact)           | Differentiate using parentheses when you can insert more numbers for multiple uses.                               |
 | Phone number (for SMS notifications) | Telefonnummer (för sms-aviseringar) | Phone number (for SMS notifications) | Differentiate using parentheses when you can insert more numbers for multiple uses.                               |
 
----
+
 ## Purchase, invoices and payment
 
 | WORDLIST            | SWEDISH               | ENGLISH             | NOTE                                                                                                  |
@@ -33,7 +33,7 @@ Every term has been discussed and researched, and some are drawn from previous P
 | VAT number          | VAT-nummer            | VAT number          | You can also write momsregistreringsnummer in Swedish when thres's enough space.                      |
 | Agreement           | Avtal                 | Agreement           | A term for agreements overall, instead of contract. Like for Agreement customer or Type of agreement. |
 
----
+
 ## Deliveries and other postal terms
 
 | WORDLIST               | SWEDISH              | ENGLISH                | NOTE                                                                                                                                                                                                                                               |
@@ -68,7 +68,7 @@ Every term has been discussed and researched, and some are drawn from previous P
 | Claims                 | Reklamationer        | Claims                 | Don't use complaints.                                                                                                                                                                                                                              |
 | Power of Attorney      | Fullmakt             | Power of Attorney      |                                                                                                                                                                                                                                                    |
 
----
+
 ## Portal Business specific
 
 | WORDLIST               | SWEDISH               | ENGLISH                | NOTE                                                                                                                        |
@@ -87,7 +87,7 @@ Every term has been discussed and researched, and some are drawn from previous P
 | Name                   | Namn                  | Name                   | PotsNord specific decided in Salesforce. We invoice the organization, but this is the workplace that the invoice concerns.  |
 | Mail Services          |                       |                        | Used today diffrent in diffrent places. Some time it's mail services and somtime postal services. We must find a common way |
 
----
+
 ## Tecnical tems 
 
 | WORDLIST                       | SWEDISH                      | ENGLISH                        | NOTE                                                                               |
@@ -105,7 +105,6 @@ Every term has been discussed and researched, and some are drawn from previous P
 | API and APIs                   | API and API:er               | API and APIs                   | Note plural in swedish and english differs                                         |
 |                                |                              |                                |                                                                                    |
 
----
 ## Other common terms
 
 | WORDLIST                  | SWEDISH          | ENGLISH                    | NOTE                                                                                  |
