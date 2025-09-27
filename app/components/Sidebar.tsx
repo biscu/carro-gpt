@@ -28,7 +28,7 @@ export default function Sidebar() {
       <div className="flex-1 overflow-y-auto scrollbar-hide px-6">
         <div className="space-y-6 pb-16">
           <div>
-          <Link href="/" className="inline-block mb-6 mt-6 w-auto">
+          <Link href="/" className="inline-block mb-6 mt-6 w-auto ml-[-8px]">
             <h1 className="text-xl font-bold hover:text-[#031331] hover:bg-neutral-100  p-2 rounded-md transition-colors">
               Carro GPT
             </h1>
