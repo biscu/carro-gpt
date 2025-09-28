@@ -58,13 +58,31 @@ export default function Chat() {
 
   return (
     <div className="flex min-h-screen bg-white">
+      {/* SVG Filter for paper texture */}
+      <svg width="0" height="0" style={{ position: 'absolute' }}>
+        <defs>
+          <filter id="roughpaper">
+            <feTurbulence type="fractalNoise" baseFrequency="0.05" result="noise" numOctaves="5" />
+            <feDiffuseLighting in="noise" lighting-color="#fff" surfaceScale="0.7">
+              <feDistantLight azimuth="45" elevation="80" />
+            </feDiffuseLighting>
+          </filter>
+        </defs>
+      </svg>
+      
       <Sidebar isOpen={isSidebarOpen} onClose={() => setIsSidebarOpen(false)} />
       <MobileNav onMenuClick={() => setIsSidebarOpen(true)} />
-      <div className="flex-1 md:pl-80 flex flex-col h-screen overflow-hidden pt-16 md:pt-0">
+      <div className="flex-1 md:pl-80 flex flex-col h-screen overflow-hidden pt-16 md:pt-0 relative">
+        {/* Paper texture background layer */}
+        <div 
+          className="absolute inset-0 w-full h-full"
+          style={{ filter: 'url(#roughpaper)' }}
+        />
+        
         {/* Messages container with scrolling */}
         <div 
           ref={messagesContainerRef}
-          className="flex-1 overflow-y-auto"
+          className="flex-1 overflow-y-auto relative z-10"
         >
           <div className="max-w-4xl mx-auto px-6 py-8">
             {!hasMessages ? (
@@ -124,7 +142,7 @@ export default function Chat() {
         </div>
 
         {/* Input area */}
-        <div className="p-4 mb-4 md:mb-16">
+        <div className="p-4 mb-4 md:mb-16 relative z-10">
           <form onSubmit={handleSubmit} className="max-w-4xl mx-auto">
             <div className="max-w-4xl mx-auto">
               <Banner
