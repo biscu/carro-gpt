@@ -9,7 +9,7 @@ import Banner from './components/Banner';
 
 export default function Chat() {
   const [input, setInput] = useState('');
-  const { messages, sendMessage, status } = useChatContext();
+  const { messages, sendMessage, status, error, clearError } = useChatContext();
   const [showThinking, setShowThinking] = useState(false);
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const thinkingTimeoutRef = useRef<NodeJS.Timeout | null>(null);
@@ -58,17 +58,6 @@ export default function Chat() {
 
   return (
     <div className="flex min-h-screen bg-white">
-      {/* SVG Filter for paper texture */}
-      <svg width="0" height="0" style={{ position: 'absolute' }}>
-        <defs>
-          <filter id="roughpaper">
-            <feTurbulence type="fractalNoise" baseFrequency="0.05" result="noise" numOctaves="5" />
-            <feDiffuseLighting in="noise" lighting-color="#fff" surfaceScale="0.7">
-              <feDistantLight azimuth="45" elevation="80" />
-            </feDiffuseLighting>
-          </filter>
-        </defs>
-      </svg>
       
       <Sidebar isOpen={isSidebarOpen} onClose={() => setIsSidebarOpen(false)} />
       <MobileNav onMenuClick={() => setIsSidebarOpen(true)} />
@@ -144,7 +133,15 @@ export default function Chat() {
         {/* Input area */}
         <div className="p-4 mb-4 md:mb-16 relative z-10">
           <form onSubmit={handleSubmit} className="max-w-4xl mx-auto">
-            <div className="max-w-4xl mx-auto">
+            <div className="max-w-4xl mx-auto space-y-2">
+              {error?.type === 'rate_limit' && (
+                <Banner
+                  variant="error"
+                  title="Rate limit reached"
+                  description="You've hit the OpenAI usage limit. Please wait a moment and try again."
+                  onDismiss={clearError}
+                />
+              )}
               <Banner
                 title="Hey you, sexy!"
                 description="This is an early concept. Reloading the page will clear your chat history."
